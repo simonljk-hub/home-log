@@ -3,12 +3,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Home log">
+<meta name="apple-mobile-web-app-title" content="Indkøbsliste">
 <meta name="theme-color" content="#0f172a">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" href="icon-192.png">
-<title>Home log</title>
+<title>Indkøbsliste</title>
 <style>
 :root{--bg:#f6f7fb;--card:#fff;--tx:#111827;--mu:#6b7280;--ac:#059669;--bd:#e5e7eb;--dn:#dc2626;--td:#4C51BF;--tdt:#fff}
 @media(prefers-color-scheme:dark){:root{--bg:#0f172a;--card:#1e293b;--tx:#f1f5f9;--mu:#94a3b8;--ac:#34d399;--bd:#334155;--dn:#f87171;--td:#818CF8;--tdt:#0f172a}}
@@ -117,7 +117,7 @@ body.dragging{cursor:grabbing}
 <!-- first launch: create or join -->
 <div id="setup" class="setup" hidden>
   <img src="icon-192.png" width="76" height="76" alt="" style="border-radius:19px">
-  <h1>Home log</h1>
+  <h1>Indkøbsliste</h1>
   <div class="mu">Shared groceries and to-dos, synced live.</div>
   <div class="card">
     <button id="create">Create a new list</button>
@@ -131,7 +131,7 @@ body.dragging{cursor:grabbing}
 <!-- main -->
 <div id="main" hidden>
   <header>
-    <h1 class="brand"><img src="icon-192.png" width="30" height="30" alt="">Home log</h1>
+    <h1 class="brand"><img src="icon-192.png" width="30" height="30" alt="">Indkøbsliste</h1>
     <div>
       <span class="mu"><span id="dot" class="dot"></span><span id="sync"></span></span>
       <button class="ghost" id="menu" aria-label="List settings">⋯</button>
@@ -699,7 +699,7 @@ $('#menu').onclick=()=>{$('#codeShow').textContent=listCode;$('#shareBtn').hidde
 $('#closeBtn').onclick=()=>$('#dlg').close();
 $('#mgrBtn').onclick=()=>{$('#dlg').close();drawMgr();$('#mgrDlg').showModal()};
 $('#mgrClose').onclick=()=>$('#mgrDlg').close();
-$('#shareBtn').onclick=()=>navigator.share({title:'Home log',text:'Join our Home log',url:link()}).catch(()=>{});
+$('#shareBtn').onclick=()=>navigator.share({title:'Indkøbsliste',text:'Join our Indkøbsliste',url:link()}).catch(()=>{});
 $('#copyBtn').onclick=async()=>{try{await navigator.clipboard.writeText(link());$('#copyBtn').textContent='Copied ✓'}catch{prompt('Copy this link',link())}setTimeout(()=>$('#copyBtn').textContent='Copy link',1500)};
 $('#leaveBtn').onclick=()=>{
   if(!confirm('Leave this list on this phone? The list itself stays for whoever else has the code.'))return;
