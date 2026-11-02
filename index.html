@@ -353,6 +353,12 @@ function addToList(e,typed,setDef){
   putItem(withQty(inCart?{...inCart,...base}:{id:uid(),...base},amt,unit));
 }
 
+// checking an item off counts as a use too, so the quick-add chips reflect what this list really buys
+function countUse(it){
+  const cid=itemCid(it),e=entries()[cid]||{id:cid,da:itemDa(it),en:it.en||'',cat:it.cat},d=entryDef(e);
+  upsertShared({id:cid,da:e.da,en:e.en||'',cat:e.cat,amt:d.amt,unit:d.unit,n:(e.n||0)+1,at:Date.now()});
+}
+
 // ---------- add flow ----------
 const QTY=/^(\d+(?:[.,]\d+)?)\s*(x|stk|pcs|g|kg|ml|dl|l|liter|pk|pak|pakke|pakker|pack|packs|can|cans|dåse|dåser|fl|flaske|flasker|bottle|bottles|bdt|bunch|bundt)?\s+(\S.*)$/i;
 function parseQty(t){
@@ -505,7 +511,7 @@ function drawMgr(){
 document.addEventListener('click',e=>{
   const t=e.target.closest('[data-t],[data-d],[data-e],[data-c],[data-new],[data-cc],[data-md],[data-mc],[data-qm],[data-qp],[data-un],[data-sw],[data-xt],[data-xd],[data-xe]');if(!t)return;
   const D=t.dataset;
-  if(D.t){const it=items.find(x=>x.id===D.t);if(it)putItem({...it,done:!it.done,ts:Date.now()})}
+  if(D.t){const it=items.find(x=>x.id===D.t);if(it){if(!it.done)countUse(it);putItem({...it,done:!it.done,ts:Date.now()})}}
   else if(D.qp||D.qm){const it=items.find(x=>x.id===(D.qp||D.qm));if(it)stepQty(it,D.qp?1:-1)}
   else if(D.d){removeItem(D.d)}
   else if(D.e){const it=items.find(x=>x.id===D.e);if(it){const q=itemQty(it);openDlg({mode:'edit',id:it.id,da:itemDa(it),en:it.en||'',amt:q.amt,unit:q.unit,cat:it.cat||''})}}
