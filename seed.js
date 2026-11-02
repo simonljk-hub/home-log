@@ -36,9 +36,6 @@ const SEED_ITEMS={
   dyr:'Hundefoder=Dog food;Kattefoder=Cat food;Kattegrus=Cat litter'
 };
 
-// Everyday groceries, most common first: fills the quick-add chips when a list has fewer than 8 used items.
-const SEED_STAPLES='Mælk;Æg;Rugbrød;Smør;Bananer;Kartofler;Løg;Gulerødder;Tomater;Ost;Kyllingebryst;Pasta;Ris;Æbler;Kaffe;Toiletpapir'.split(';');
-
 // Standard amount + unit for each item (edit per item on the list, or change the default by saving the item dialog).
 // Units: pcs, g, kg, ml, dl, l, pack, can, bottle, bunch. Items not listed use their category's default below.
 const SEED_CATDEF={frugt:'1 pcs',brod:'1 pcs',koed:'500 g',fisk:'300 g',paalaeg:'1 pack',mejeri:'1 pcs',kolonial:'1 pack',krydderier:'1 pcs',frost:'1 pack',drikke:'1 bottle',snacks:'1 pack',husholdning:'1 pack',pleje:'1 pcs',baby:'1 pack',dyr:'1 pack',andet:'1 pcs'};

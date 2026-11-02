@@ -362,6 +362,9 @@ function countUse(it){
   upsertShared({id:cid,da:e.da,en:e.en||'',cat:e.cat,amt:d.amt,unit:d.unit,n:(e.n||0)+1,at:Date.now()});
 }
 
+// everyday groceries, most common first: fills the quick-add chips when a list has fewer than 8 used items
+const STAPLES='Mælk;Æg;Rugbrød;Smør;Bananer;Kartofler;Løg;Gulerødder;Tomater;Ost;Kyllingebryst;Pasta;Ris;Æbler;Kaffe;Toiletpapir'.split(';');
+
 // ---------- add flow ----------
 const QTY=/^(\d+(?:[.,]\d+)?)\s*(x|stk|pcs|g|kg|ml|dl|l|liter|pk|pak|pakke|pakker|pack|packs|can|cans|dåse|dåser|fl|flaske|flasker|bottle|bottles|bdt|bunch|bundt)?\s+(\S.*)$/i;
 function parseQty(t){
@@ -387,7 +390,7 @@ function suggest(){
   let c=Object.values(entries()).filter(e=>!onList.has(e.id));
   if(!rest){
     const used=c.filter(e=>e.n>0).sort((a,b)=>b.n-a.n||b.at-a.at).slice(0,8),have=new Set(used.map(e=>e.id));
-    const fill=SEED_STAPLES.map(keyOf).filter(id=>!have.has(id)&&!onList.has(id)&&seedItems[id]).slice(0,8-used.length).map(id=>entries()[id]);
+    const fill=STAPLES.map(keyOf).filter(id=>!have.has(id)&&!onList.has(id)&&seedItems[id]).slice(0,8-used.length).map(id=>entries()[id]);
     c=[...used,...fill];
     $('#chipsHead').hidden=!c.length;
     box.className='chips';
