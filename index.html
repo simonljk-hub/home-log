@@ -362,7 +362,10 @@ function countUse(it){
   upsertShared({id:cid,da:e.da,en:e.en||'',cat:e.cat,amt:d.amt,unit:d.unit,n:(e.n||0)+1,at:Date.now()});
 }
 
-// everyday groceries, most common first: fills the quick-add chips when a list has fewer than 8 used items\nconst STAPLES='Mælk;Æg;Rugbrød;Smør;Bananer;Kartofler;Løg;Gulerødder;Tomater;Ost;Kyllingebryst;Pasta;Ris;Æbler;Kaffe;Toiletpapir'.split(';');\n\n// ---------- add flow ----------
+// everyday groceries, most common first: fills the quick-add chips when a list has fewer than 8 used items
+const STAPLES='Mælk;Æg;Rugbrød;Smør;Bananer;Kartofler;Løg;Gulerødder;Tomater;Ost;Kyllingebryst;Pasta;Ris;Æbler;Kaffe;Toiletpapir'.split(';');
+
+// ---------- add flow ----------
 const QTY=/^(\d+(?:[.,]\d+)?)\s*(x|stk|pcs|g|kg|ml|dl|l|liter|pk|pak|pakke|pakker|pack|packs|can|cans|dåse|dåser|fl|flaske|flasker|bottle|bottles|bdt|bunch|bundt)?\s+(\S.*)$/i;
 function parseQty(t){
   const m=QTY.exec(t.trim());
