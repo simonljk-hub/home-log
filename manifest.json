@@ -1,7 +1,7 @@
 {
  "id": "cart-log-v1",
- "name": "Home log",
- "short_name": "Home log",
+ "name": "Indkøbsliste",
+ "short_name": "Indkøbsliste",
  "start_url": ".",
  "display": "standalone",
  "background_color": "#0f172a",

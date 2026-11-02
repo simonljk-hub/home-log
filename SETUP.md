@@ -1,4 +1,4 @@
-# Home log – setup
+# Indkøbsliste – setup
 
 A shared grocery list + to-do PWA. Static files only; live sync through Firebase Firestore (free Spark plan).
 Share a list with the 8-character code or the invite link. Works offline.
